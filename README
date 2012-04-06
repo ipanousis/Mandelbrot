@@ -1,0 +1,11 @@
+Uses OpenCL to run the mandelbrot function on GPU.
+
+While it does run real-time on an already old graphics card 
+(ATI Mobility Radeon HD4650) with an FPS ranging from 5-30
+(depending on the iterations), it can be hugely increased
+if the below tricks are used;
+
+*** use floats to write to output array to ensure coalescence
+   in older or demanding GPUs that only deal with consecutive bytes
+*** don't transfer back the results, use CL/GL interop to switch
+   buffers on the GPU
